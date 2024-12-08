@@ -34,7 +34,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
-BYTE mean (int height, int width, BYTE *pixel[height][width], int x, int y);
+BYTE mean (int height, int width, BYTE pixel[height][width], int x, int y);
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -58,7 +58,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     }
     return;
 }
-BYTE mean (int height, int width, BYTE *pixel[height][width], int x, int y)
+BYTE mean (int height, int width, BYTE pixel[height][width], int x, int y)
     {
         int total = 0;
         int divisor = 0;
