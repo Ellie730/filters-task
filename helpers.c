@@ -34,7 +34,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
-BYTE mean (int height, int width, BYTE pixel[height][width], int x, int y);
+BYTE mean (int height, int width, BYTE *pixel[height][width], int x, int y);
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -43,9 +43,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            average[i][j].rgbtBlue = mean (height, width, image[height][width].rgbtBlue, i, j);
-            average[i][j].rgbtRed = mean (height, width, image[height][width].rgbtRed, i, j);
-            average[i][j].rgbtGreen = mean (height, width, image[height][width].rgbtGreen, i, j);
+            average[i][j].rgbtBlue = mean (height, width, &image[height][width].rgbtBlue, i, j);
+            average[i][j].rgbtRed = mean (height, width, &image[height][width].rgbtRed, i, j);
+            average[i][j].rgbtGreen = mean (height, width, &image[height][width].rgbtGreen, i, j);
         }
     }
 
@@ -58,7 +58,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     }
     return;
 }
-BYTE mean (int height, int width, BYTE pixel[height][width], int x, int y)
+BYTE mean (int height, int width, BYTE *pixel[height][width], int x, int y)
     {
         int total = 0;
         int divisor = 0;
@@ -76,7 +76,7 @@ BYTE mean (int height, int width, BYTE pixel[height][width], int x, int y)
         return total/divisor;
     }
 
-int sobel (int height, int width, int pixel[height][width], int x, int y);
+int sobel (int height, int width, int *pixel[height][width], int x, int y);
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -86,9 +86,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             // calculate Gx
-            new_colour[i][j].rgbtRed = sobel (height, width, *image[height][width].rgbtRed, i, j);
-            new_colour[i][j].rgbtGreen = sobel (height, width, image[height][width].rgbtGreen, i, j);
-            new_colour[i][j].rgbtBlue = sobel (height, width, image[height][width].rgbtBlue, i, j);
+            new_colour[i][j].rgbtRed = sobel (height, width, &image[height][width].rgbtRed, i, j);
+            new_colour[i][j].rgbtGreen = sobel (height, width, &image[height][width].rgbtGreen, i, j);
+            new_colour[i][j].rgbtBlue = sobel (height, width, &image[height][width].rgbtBlue, i, j);
         }
     }
     return;
