@@ -43,9 +43,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            average[i][j].rgbtBlue = mean (height, width, *image[height][width].rgbtBlue, i, j);
-            average[i][j].rgbtRed = mean (height, width, *image[height][width].rgbtRed, i, j);
-            average[i][j].rgbtGreen = mean (height, width, *image[height][width].rgbtGreen, i, j);
+            average[i][j].rgbtBlue = mean (height, width, image[height][width].rgbtBlue, i, j);
+            average[i][j].rgbtRed = mean (height, width, image[height][width].rgbtRed, i, j);
+            average[i][j].rgbtGreen = mean (height, width, image[height][width].rgbtGreen, i, j);
         }
     }
 
